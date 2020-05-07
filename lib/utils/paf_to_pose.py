@@ -1,11 +1,8 @@
 import cv2
 import numpy as np
-import time
 from scipy.ndimage.filters import gaussian_filter, maximum_filter
-
 from scipy.ndimage.morphology import generate_binary_structure
 from lib.pafprocess import pafprocess
-
 from lib.utils.common import Human, BodyPart, CocoPart, CocoColors, CocoPairsRender
 
 # Heatmap indices to find each limb (joint connection). Eg: limb_type=1 is
@@ -20,7 +17,6 @@ joint_to_limb_heatmap_relationship = [[1, 2], [2, 3], [3, 4], [1, 5], [5, 6], [6
 # PAFneckLShoulder_y=paf_xy_coords_per_limb[1][1]
 paf_xy_coords_per_limb = np.arange(14).reshape(7, 2)
 NUM_LIMBS = len(joint_to_limb_heatmap_relationship)
-
 
 def find_peaks(param, img):
     """
